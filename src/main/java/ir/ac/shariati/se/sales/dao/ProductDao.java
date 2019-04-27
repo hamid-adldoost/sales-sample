@@ -27,13 +27,23 @@ public class ProductDao {
             return productList.get(0);
     }
 
-    public Product saveProduct(Product product) {
-        //fixme : implement this method
-        return null;
+    public void saveProduct(Product product) {
+
+        entityManager.persist(product);
+
+    }
+
+    public Product updateProduct(Product product) {
+
+        return entityManager.merge(product);
+
     }
 
     public void deleteProduct(Integer id) {
-        //fixme : implement this method
+
+        Product product = entityManager.find(Product.class, id);
+
+        entityManager.remove(product);
     }
 
 }
